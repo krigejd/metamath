@@ -115,3 +115,18 @@ $)
     mp1i $p |- ( ch -> ps ) $=
       ( ax-mp a1i ) BCABDEFG $.
   $}
+
+  ${
+    a2i.1 $e |- ( ph -> ( ps -> ch ) ) $.
+    $( Inference distributing an antecedent $)
+    a2i $p |- ( ( ph -> ps ) -> ( ph -> ch ) ) $=
+      ( wi ax-2 ax-mp ) ABCEEABEACEEDABCFG $.
+  $}
+
+  ${
+    mpd.1 $e |- ( ph -> ps ) $.
+    mpd.2 $e |- ( ph -> ( ps -> ch ) ) $.
+    $( A modus ponens deduction $)
+    mpd $p |- ( ph -> ch ) $=
+      ( wi a2i ax-mp ) ABFACFDABCEGH $.
+  $}
