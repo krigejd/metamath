@@ -8,12 +8,18 @@ $)
 
 $c |- $.
 $c wff $.
+$c class $.
 
 $c ( $.
 $c ) $.
 
 $c -> $.
 $c -. $.
+
+$c = $.
+$c A. $.
+$c E. $.
+$c e. $.
 
 $( 
     ------------------------
@@ -27,6 +33,13 @@ $v ch $.
 $v ta $.
 $v th $.
 
+$v x $.
+$v y $.
+$v z $.
+
+$v A $.
+$v B $.
+
 $( 
     -----------------------------
     Declarations of variable types 
@@ -39,6 +52,13 @@ wch $f wff ch $.
 wta $f wff ta $.
 wth $f wff th $.
 
+vx $f setvar x $.
+vy $f setvar y $.
+vz $f setvar z $.
+
+cA $f class A $.
+cB $f class B $.
+
 $( 
     --------------------------------------------
     Recursive definitions of well-formed formulas 
@@ -47,6 +67,19 @@ $)
 
 wi $a wff ( ph -> ps ) $.
 wn $a wff -. ph $.
+
+weq $a wff A = B $.
+we $a wff A e. B $.
+wal $a wff A. x ph $.
+wex $a wff E. x ph $.
+
+$( 
+    --------------------------------
+    Recursive definitions of classes
+    --------------------------------
+$)
+
+cx $a class x $.
 
 $( 
     --------------------------------
@@ -130,3 +163,47 @@ $)
     mpd $p |- ( ph -> ch ) $=
       ( wi a2i ax-mp ) ABFACFDABCEGH $.
   $}
+
+  ${
+    imim2i.1 $e |- ( ph -> ps ) $.
+    $( Inference adding common antecedents in an implication $)
+    imim2i $p |- ( ( ch -> ph ) -> ( ch -> ps ) ) $=
+      ( wi a1i a2i ) CABABECDFG $.
+  $}
+
+  ${
+    syl.1 $e |- ( ph -> ps ) $.
+    syl.2 $e |- ( ps -> ch ) $.
+    $( Syllogism $)
+    syl $p |- ( ph -> ch ) $=
+      ( wi a1i mpd ) ABCDBCFAEGH $.
+  $}
+
+
+
+$( 
+    ------------------------------------------
+    Axioms of Predicate Calculus with Equality
+    ------------------------------------------
+$)
+
+  ${
+    ax-gen.1 $e |- ph $.
+    ax-gen $a |- A. x ph $.
+  $}
+
+    ax-4 $a |- ( A. x ( ph -> ps ) -> ( A. x ph -> A. x ps ) ) $.
+
+  ${ 
+    $d x ph $. 
+    ax-5 $a |- ( ph -> A. x ph ) $.
+  $}
+
+    ax-6 $a |- -. A. x -. x = y $.
+
+    ax-7 $a |- ( x = y -> ( x = z -> y = z ) ) $.
+
+    ax-8 $a |- ( x = y -> ( x e. z -> y e. z ) ) $.
+
+    ax-9 $a |- ( x = y -> ( z e. x -> z e. y ) ) $.
+
